@@ -96,6 +96,7 @@ func (t *SimpleChaincode) createPromise(stub shim.ChaincodeStubInterface, args [
 
 	fmt.Printf("Promise: from = %v, to = %v, msgs = %v, hash = %v", from, to, msgs, msgHash)
 	promise := Promise{from: from, to: to, msgs: msgs, hash: msgHash}
+	fmt.Printf("Saved: %v\n", promise)
 	promiseBytes, err := json.Marshal(&promise)
 	promiseIDBytes, _ := json.Marshal(promiseID)
 	
@@ -123,6 +124,7 @@ func getPromiseByID(stub shim.ChaincodeStubInterface, promiseID string) (Promise
 	}
 	fmt.Println("---------------")
 	fmt.Println(promise)
+	fmt.Println(promise.from)
 	fmt.Println(pmBytes)
 	return promise, pmBytes, nil
 }
