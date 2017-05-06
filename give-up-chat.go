@@ -34,19 +34,19 @@ type Promise struct {
 }
 
 func main() {
-	fmt.Println("Hello")
-	from := "1"
-	to := "2"
-	msgs := "3"
-	msgHash := "4"
-	promise := Promise{from: from, to: to, msgs: msgs, hash: msgHash}
-	fmt.Println(promise)
-	obj, _ := json.Marshal(&promise)
-	fmt.Println(obj)
-	// err := shim.Start(new(SimpleChaincode))
-	// if err != nil {
-	// 	fmt.Printf("Error starting Simple chaincode: %s", err)
-	// }
+	// fmt.Println("Hello")
+	// from := "1"
+	// to := "2"
+	// msgs := "3"
+	// msgHash := "4"
+	// promise := Promise{from: from, to: to, msgs: msgs, hash: msgHash}
+	// fmt.Println(promise)
+	// obj, _ := json.Marshal(&promise)
+	// fmt.Println(obj)
+	err := shim.Start(new(SimpleChaincode))
+	if err != nil {
+		fmt.Printf("Error starting Simple chaincode: %s", err)
+	}
 }
 
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
