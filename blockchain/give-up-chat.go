@@ -60,10 +60,10 @@ func main() {
     // }
 	// fmt.Println("here", string(obj))
 
-	// err := shim.Start(new(SimpleChaincode))
-	// if err != nil {
-	// 	fmt.Printf("Error starting Simple chaincode: %s", err)
-	// }
+	err := shim.Start(new(SimpleChaincode))
+	if err != nil {
+		fmt.Printf("Error starting Simple chaincode: %s", err)
+	}
 }
 
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
