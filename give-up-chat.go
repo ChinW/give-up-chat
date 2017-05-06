@@ -61,8 +61,8 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	if function == "promise" {
-		if len(args) != 3 {
-			return nil, errors.New("Incorrect number of arguments. Expecting 3")
+		if len(args) != 4 {
+			return nil, errors.New("Incorrect number of arguments. Expecting 4")
 		}
 		return t.createPromise(stub, args)
 	}
@@ -89,7 +89,7 @@ func (t *SimpleChaincode) createPromise(stub shim.ChaincodeStubInterface, args [
 	var from, to, msgs, msgHash, promiseID string
 	var err error
 	if len(args) != 4 {
-		return nil, errors.New("Incorrect number of arguments. Expecting 2")
+		return nil, errors.New("Incorrect number of arguments. Expecting 4")
 	}
 	from = args[0]
 	to = args[1]
