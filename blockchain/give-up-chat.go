@@ -121,5 +121,8 @@ func getPromiseByID(stub shim.ChaincodeStubInterface, promiseID string) (Promise
 	if err != nil {
 		fmt.Println("Error unmarshalling promise by id")
 	}
+	fmt.Println("---------------")
+	fmt.Println(promise)
+	fmt.Println(pmBytes)
 	return promise, pmBytes, nil
 }
