@@ -24,7 +24,7 @@ import (
 type SimpleChaincode struct {
 }
 
-var msgNO int = 0
+// var msgNO int = 0
 
 type Promise struct {
 	from string
