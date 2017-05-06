@@ -94,13 +94,16 @@ func (t *SimpleChaincode) createPromise(stub shim.ChaincodeStubInterface, args [
 	msgs = args[3]
 	msgHash = args[4]
 
-	fmt.Printf("Promise: from = %v, to = %v, msgs = %v, hash = %v", from, to, msgs, msgHash)
+	fmt.Printf("Promise: from = %v, to = %v, msgs = %v, hash = %v\n", from, to, msgs, msgHash)
 	promise := Promise{from: from, to: to, msgs: msgs, hash: msgHash}
-	fmt.Printf("Saved: %v\n", promise)
 	promiseBytes, err := json.Marshal(&promise)
 	promiseIDBytes, _ := json.Marshal(promiseID)
+	
+	fmt.Printf("Saved: %v\n", promise)
 	fmt.Printf("Saved promiseBytes: %v\n", promiseBytes)
+	fmt.Println(promiseBytes)
 	fmt.Printf("Saved promiseID: %v\n", promiseID)
+
 	if err != nil {
 		return nil, errors.New("Error create promise")
 	}
@@ -119,7 +122,7 @@ func getPromiseByID(stub shim.ChaincodeStubInterface, promiseID string) (Promise
 		fmt.Println("Error retrieving promise by id")
 	}
 
-	err = json.Unmarshal(pmBytes, &promise)
+	err = json.Unmarshal(pmBytes, &Promise)
 	if err != nil {
 		fmt.Println("Error unmarshalling promise by id")
 	}
