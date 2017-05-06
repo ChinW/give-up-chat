@@ -99,7 +99,8 @@ func (t *SimpleChaincode) createPromise(stub shim.ChaincodeStubInterface, args [
 	fmt.Printf("Saved: %v\n", promise)
 	promiseBytes, err := json.Marshal(&promise)
 	promiseIDBytes, _ := json.Marshal(promiseID)
-	
+	fmt.Printf("Saved promiseBytes: %v\n", promiseBytes)
+	fmt.Printf("Saved promiseID: %v\n", promiseID)
 	if err != nil {
 		return nil, errors.New("Error create promise")
 	}
