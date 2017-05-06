@@ -13,6 +13,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	// "reflect"
 	// "io"
 	// "strconv"
 	// "time"
@@ -27,26 +28,42 @@ type SimpleChaincode struct {
 // var msgNO int = 0
 
 type Promise struct {
-	from string
-	to   string
-	msgs  string
-	hash string
+	From string
+	To   string
+	Msgs  string
+	Hash string
 }
 
+// type User struct {
+//     Name string
+// 	Sex string
+// }
+
 func main() {
-	// fmt.Println("Hello")
-	// from := "1"
-	// to := "2"
-	// msgs := "3"
-	// msgHash := "4"
-	// promise := Promise{from: from, to: to, msgs: msgs, hash: msgHash}
-	// fmt.Println(promise)
-	// obj, _ := json.Marshal(&promise)
-	// fmt.Println(obj)
-	err := shim.Start(new(SimpleChaincode))
-	if err != nil {
-		fmt.Printf("Error starting Simple chaincode: %s", err)
-	}
+ 	// user := &User{Name: "Frank", Sex: "男"}
+    // b, err := json.Marshal(user)
+    // if err != nil {
+    //     fmt.Println(err)
+    //     return
+    // }
+    // fmt.Println(string(b))
+
+	// pfrom := "12323"
+	// pto := "2"
+	// pmsgs := "3"
+	// pHash := "4"
+	// promise := &Promise{From: pfrom, To: pto, Msgs: pmsgs, Hash: pHash}
+	// obj, err := json.Marshal(promise)
+	// if err != nil {
+    //     fmt.Println(err)
+    //     return
+    // }
+	// fmt.Println("here", string(obj))
+
+	// err := shim.Start(new(SimpleChaincode))
+	// if err != nil {
+	// 	fmt.Printf("Error starting Simple chaincode: %s", err)
+	// }
 }
 
 func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
@@ -95,7 +112,7 @@ func (t *SimpleChaincode) createPromise(stub shim.ChaincodeStubInterface, args [
 	msgHash = args[4]
 
 	fmt.Printf("Promise: from = %v, to = %v, msgs = %v, hash = %v\n", from, to, msgs, msgHash)
-	promise := Promise{from: from, to: to, msgs: msgs, hash: msgHash}
+	promise := Promise{From: from, To: to, Msgs: msgs, Hash: msgHash}
 	promiseBytes, err := json.Marshal(promise)
 	promiseIDBytes, _ := json.Marshal(promiseID)
 	
@@ -128,7 +145,7 @@ func getPromiseByID(stub shim.ChaincodeStubInterface, promiseID string) (Promise
 	}
 	fmt.Println("---------------")
 	fmt.Println(promise)
-	fmt.Println(promise.from)
+	fmt.Println(promise.From)
 	fmt.Println(pmBytes)
 	return promise, pmBytes, nil
 }
