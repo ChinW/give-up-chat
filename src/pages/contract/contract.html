@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>查看契约</ion-title>
+    <ion-buttons end>
+      <div>
+        <button ion-button icon-only (click)="underToast()">
+          <ion-icon name="archive"></ion-icon>
+        </button>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="{{this.promiseState ? 'promising' : ''}}">
+  <ion-list no-lines class="qi-message-list">
+    <div ion-item class="qi-message-sysmsg">
+      <p>点击右上方导出契言</p>
+    </div>
+
+    <div ion-item class="qi-message-bubble" *ngFor="let m of promise.data" [ngClass]="{self: m.from === myself}">
+      <img class="qi-message-avatar" src="assets/img/head.png">
+      <div class="qi-message-content">
+        <div class="msg-content">
+          {{m.msg}}
+        </div>
+        <div class="msg-ext"><ion-icon name="lock" style="opacity: 1;"></ion-icon></div>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,19 @@
+page-user {
+  .user{
+    text-align: center;
+    padding: 20px 0 10px 0;
+    color: #fff;
+    @include blend-gradient();
+    .user-name {
+      font-size: 20px;
+      padding: 0;
+      margin: 8px 0;
+    }
+  }
+  .user .avatar{
+      border-radius: 100%;
+      width: 10rem;
+      height: 10rem;
+      box-shadow: 0 0 10px #fff;
+  }
+}

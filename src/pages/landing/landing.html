@@ -1,0 +1,9 @@
+<ion-content style="background-color: #f5f5f5;">
+<div class="hello-screen">
+  <img class="logo" src="assets/img/logo.svg">
+  <div class="qi-footer" *ngIf="showButton">
+    <button ion-button color="dark" block large [navPush]="LoginPage" [navParams]="{'mode':'register'}">注 册</button>
+    <button ion-button block large [navPush]="LoginPage" [navParams]="{'mode':'login'}">登 陆</button>
+  </div>
+</div>
+</ion-content>

@@ -1,0 +1,52 @@
+page-landing {
+  .hello-screen {
+    height: 100%;
+    background-size: cover;
+    background-image: url('../assets/img/hellobg.png');
+  }
+  .hello-screen .logo {
+    position: fixed;
+    top: 15%;
+    width: 60%;
+    margin: 0 20%;
+  }
+  .hello-screen .action {
+    position: fixed;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+  }
+  .hello-screen .action a {
+    display: block;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.8rem;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    margin: 22px 5%;
+    border-radius: 10px;
+  }
+  .hello-screen .action a.login {
+    background-color: #E80000;
+  }
+  .qi-footer {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    button {
+      margin-top: 1.5rem;
+    }
+  }
+  @keyframes myfirst {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+    to {
+      transform: rotate(5deg) scale(1.15);
+    }
+  }
+}

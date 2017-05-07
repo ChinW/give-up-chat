@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{this.promiseState ? "与" + targetUser.name + "契言中" : targetUser.name}}</ion-title>
+    <ion-buttons end>
+      <div *ngIf="this.promiseState === true; else elseBlock">
+        <!--<button ion-button icon-only (click)="cancelPromise()">
+          取消
+        </button>
+        <button ion-button icon-only (click)="createPromise()">
+          提交
+        </button>-->
+        <button ion-button icon-only (click)="stopPromise()">
+          <ion-icon name="lock" style="opacity: 1;"></ion-icon>
+        </button>
+      </div>
+      <ng-template #elseBlock>
+        <button ion-button icon-only (click)="beginPromise()">
+          <ion-icon name="unlock" style="opacity: .6;"></ion-icon>
+        </button>
+      </ng-template>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="{{this.promiseState ? 'promising' : ''}}">
+  <ion-list no-lines class="qi-message-list">
+    <div ion-item class="qi-message-sysmsg">
+      <p>点击右上方锁按钮进行"契言"</p>
+    </div>
+
+    <div ion-item class="qi-message-bubble" *ngFor="let m of msgList" [ngClass]="{self: m.self}">
+      <img class="qi-message-avatar" [src]="'./assets/img/head/' + (m.self ? userServer.loginUser : targetUser.id) % 25 + '.png'">
+      <div class="qi-message-content">
+        <div class="msg-content">
+          {{m.content==''?'　':m.content}}
+        </div>
+        <div class="msg-ext"></div>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
+
+  <!--<div class="qi-message-sendarea">
+    <ion-row>
+      <ion-col col-9><ion-input class="msginput" type="text" [(ngModel)]="preSend"></ion-input></ion-col>
+      <ion-col col-3><a class="btn" (click)="sendMessage()">发送</a></ion-col>
+    </ion-row>
+  </div>-->
+<ion-footer>
+  <ion-toolbar class="messages-page-footer" position="bottom">
+    <ion-input type="text" (force)="onForce()" [(ngModel)]="preSend" placeholder="Type a message"></ion-input>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="sendMessage()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,152 @@
+page-contract {
+  .promising {
+    .scroll-content {
+      background: #FFAFBD;
+      background: -webkit-linear-gradient(to right, #ffc3a0, #FFAFBD);
+      background: linear-gradient(to right, #ffc3a0, #FFAFBD);
+      transition: all 0.5s ease;
+    }
+  }
+  .scroll-content {
+    background: #eee;
+    transition: all 0.5s ease;
+  }
+  .qi-message-list {
+    position: relative;
+    padding: 1rem;
+    padding-bottom: 80px;
+
+    .qi-message-sysmsg {
+
+      background-color: transparent;
+      text-align: center;
+      margin: 0px 0;
+
+      p{
+        display: inline-block;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        border-radius: 14px;
+        padding: 3px 16px;
+      }
+
+    }
+
+    .qi-message-bubble {
+
+
+      &:after {
+        display: block;
+        height: 0;
+        visibility: hidden;
+        clear: both;
+        content: ' ';
+      }
+
+
+      .qi-message-avatar {
+        float: left;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        display: block;
+      }
+
+      .qi-message-content {
+        margin-top: 1rem;
+        padding: 1rem;
+        float: left;
+        margin-left: 2rem;
+        max-width: 70%;
+        background: #ffd2d4;
+        position: relative;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+
+        .msg-ext{
+          position: absolute;
+          bottom: 0;
+          right: -25px;
+          color: #8bbc84;
+        }
+
+        &:before {
+          position: absolute;
+          content: ' ';
+          width: 0;
+          height: 0;
+          top: 0;
+          left: -1.5rem;
+          border-top: 1.5rem solid #ffd2d4;
+          border-left: 1.5rem solid transparent;
+        }
+      }
+
+      &.self {
+        .qi-message-avatar {
+          float: right;
+        }
+        .qi-message-content {
+          float: right;
+          background: #fff;
+          margin-left: 0;
+          margin-right: 2rem;
+          box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.1);
+
+          .msg-ext{
+            position: absolute;
+            bottom: 0;
+            left: -25px;
+          }
+
+
+          &:before {
+            position: absolute;
+            content: ' ';
+            width: 0;
+            height: 0;
+            top: 0;
+            left: auto;
+            right: -1.5rem;
+            border-top: 1.5rem solid #fff;
+            border-left: none;
+            border-right: 1.5rem solid transparent;
+          }
+        }
+      }
+
+    }
+
+  }
+  .qi-message-sendarea {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    background-color: #ddd;
+    padding: 0 1rem;
+
+    .msginput {
+      background-color: #efefef;
+      margin: 0.4rem 0.2rem;
+      padding: 0 1em;
+      height: 2.8em;
+      font-size: 1.6rem;
+      border-radius: 4px;
+    }
+
+    a.btn{
+      display: inline-block;
+          background-color: #f53d3d;
+          color: #fff;
+          margin: 0.4rem 0.2rem;
+          text-align: center;
+          width: 100%;
+          height: 2.8em;
+          line-height: 2.8em;
+          font-size: 1.6rem;
+          border-radius: 4px;
+    }
+  }
+}

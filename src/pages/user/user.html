@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      个人设置
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="user">
+    <img class="avatar" [src]="'./assets/img/head/' + userService.loginUser % 25 + '.png'">
+    <p class="user-name">{{ user ? user.name : '' }}</p>
+  </div>
+  <ion-list no-lines>
+    <button ion-item>
+      <ion-icon name="planet" item-left></ion-icon>
+      消息公正
+    </button>
+    <button ion-item>
+      <ion-icon name="star" item-left></ion-icon>
+      信息收藏
+    </button>
+    <button ion-item>
+      <ion-icon name="settings" item-left></ion-icon>
+      系统设置
+    </button>
+    <button ion-item  (click)="logout()">
+      <ion-icon name="key" item-left></ion-icon>
+      退出登录
+    </button>
+
+  </ion-list>
+</ion-content>
