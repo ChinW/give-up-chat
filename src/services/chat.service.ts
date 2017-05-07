@@ -15,7 +15,7 @@ export class ChatService {
   onEndJustice = null
 
   serverURI = 'http://121.201.14.180:80/'
-  bcServer = 'http://148.100.93.134:7050/'
+  bcServer = 'http://148.100.92.120:7050/'
   bcBody = {
     "jsonrpc": "2.0",
     "method": "deploy",
@@ -119,6 +119,7 @@ export class ChatService {
       content: content,
       time: Date.now()
     }
+
     console.log(JSON.stringify(data))
     this.ws.send(JSON.stringify(data))
     if (!this.msgList[to]) this.msgList[to] = []
@@ -190,8 +191,16 @@ export class ChatService {
     const sentBody = Object.assign({}, this.bcBody)
     sentBody.method = 'invoke'
     sentBody.params.ctorMsg.function = 'promise'
-    const promiseContent = JSON.stringify(promise)
-    const hash = sha256(promiseContent)
+    let promiseContent = JSON.stringify(promise)
+    let hash = sha256(promiseContent)
+
+    console.warn('before ', hash)
+
+    // promiseContent = '[D]'
+    // hash = sha256(promiseContent)
+
+    // console.warn('after', hash)
+
     sentBody.params.ctorMsg.args = [promiseID, from.toString(), to, promiseContent, hash]
     console.log('sentBody', sentBody)
     fetch(`${this.bcServer}chaincode`, {

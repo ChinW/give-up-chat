@@ -128,18 +128,30 @@ export class MessagePage {
   checkPromise(targetPromiseId, myPromiseId) {
     this.chatServer.checkPromise(targetPromiseId).then((res) => {
       console.log('checkPromise targetPromise ID res', res)
-      // if (typeof res['result']['message'] !== 'undefined') {
-      if (1) {
-        this.chatServer.uploadPromise(
-          myPromiseId,
-          this.userServer.accessToken,
-          this.userServer.loginUser,
-          this.targetUser.id,
-          this.promiseMsgs
-        )
-        this.promiseState = false
-        this.presentToast('契约完成 ✅')
-        this.promiseMsgs = []
+      if (typeof res['result']['message'] !== 'undefined') {
+      // if (1) {
+        this.chatServer.checkPromise(myPromiseId).then((myblock) => {
+          const myblockdata = JSON.parse(myblock["result"]["message"])
+          const targetdata = JSON.parse(res["result"]["message"])
+
+          console.warn('myblockdata', myblockdata)
+          console.warn('targetdata', targetdata)
+
+          if (myblockdata.Hash !== targetdata.Hash) {
+            this.presentToast('契约失败 ❌')
+          } else {
+            this.chatServer.uploadPromise(
+              myPromiseId,
+              this.userServer.accessToken,
+              this.userServer.loginUser,
+              this.targetUser.id,
+              this.promiseMsgs
+            )
+            this.promiseState = false
+            this.presentToast('契约完成 ✅')
+            this.promiseMsgs = []
+          }
+        })
       } else if (this.count < 3){
         this.count ++
         setTimeout(() => {
